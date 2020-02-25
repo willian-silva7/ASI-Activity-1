@@ -59,6 +59,8 @@ namespace wheather_API.Controllers
                 TemperatureC = 21,
                 Summary = "Sunny"
             };
+
+
             return cidade;
         }
 
