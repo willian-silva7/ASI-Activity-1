@@ -23,7 +23,19 @@ namespace wheather_API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        int Zipcode = 1;
+        string countryCode = "pt";
+
+        private const string API_KEY = "fff3f50648f18ab69e1e18fd46225dc0";
+        private const string CurrentUrl = "http://api.openweathermap.org/data/2.5/weather?" +
+    "@QUERY@=@LOC@&mode=xml&units=imperial&APPID=" + API_KEY;
+        private const string ForecastUrl =
+            "http://api.openweathermap.org/data/2.5/forecast?" +
+            "@QUERY@=@LOC@&mode=xml&units=imperial&APPID=" + API_KEY;
+        //private const string CurrentTest = "http://api.openweathermap.org/data/2.5/weather?zip" + Zipcode + "pt&AAPID=" + API_KEY;
+    
+
+[HttpGet]
         /*
         public IEnumerable<WeatherForecast> Get()
         {
@@ -43,16 +55,21 @@ namespace wheather_API.Controllers
             var cidade = new WeatherForecast
             {
                 Date = DateTime.Now,
-                TemperatureC = 21,
+                TemperatureC = 22,
                 Summary = "Sunny"
             };
 
             return cidade;
         }
 
+        [Route("~/api/test")]
         [HttpPost]
-        public WeatherForecast Post(int zipCode)
+        public WeatherForecast Test(int zipCode)
         {
+            var CurrentTest= "http://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "pt&AAPID=" + API_KEY;
+
+            Console.WriteLine(CurrentTest);
+
             var cidade = new WeatherForecast
             {
                 Date = DateTime.Now,
@@ -60,9 +77,8 @@ namespace wheather_API.Controllers
                 Summary = "Sunny"
             };
 
-
             return cidade;
         }
-
+        
     }
 }
